@@ -1,4 +1,5 @@
 import { MainCard } from "../patterns/MainCard";
+import { WeekCard } from "../patterns/WeekCard";
 import SearchBar from "../ui/SearchBar";
 import TextBody from "../ui/TextBody";
 
@@ -21,6 +22,12 @@ const WeatherComponent = () => {
         <MainCard.Title />
         <MainCard.CurrentDay />
       </MainCard.Root>
+      <WeekCard.Root>
+        <WeekCard.Day />
+        <WeekCard.WeekDay />
+        <WeekCard.Image />
+        <WeekCard.Celsius />
+      </WeekCard.Root>
     </div>
   );
 };
