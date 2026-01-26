@@ -16,8 +16,14 @@
 }
 
 @theme {
-  --font-satoshi-regular: "Satoshi-Regular", sans-serif;
-  --font-satoshi-light: "Satoshi-Light", sans-serif;
+  --font-primary-regular: "Satoshi-Regular", sans-serif;
+  --font-primary-light: "Satoshi-Light", sans-serif;
 
   --color-light: #ffffff;
+}
+
+@layer components {
+  .font-body {
+    @apply font-primary-regular text-base/6;
+  }
 }

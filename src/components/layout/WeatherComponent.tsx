@@ -12,7 +12,7 @@ const WeatherComponent = () => {
         placeholder="Search by location"
         label="search-by-location"
       />
-      <TextBody />
+      <TextBody>Flórida, EUA</TextBody>
       <MainCard.Root>
         <MainCard.Image />
         <MainCard.Celsius />
