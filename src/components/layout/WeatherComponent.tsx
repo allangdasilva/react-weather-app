@@ -1,4 +1,5 @@
 import SearchBar from "../ui/SearchBar";
+import TextBody from "../ui/TextBody";
 
 const WeatherComponent = () => {
   return (
@@ -9,6 +10,7 @@ const WeatherComponent = () => {
         placeholder="Search by location"
         label="search-by-location"
       />
+      <TextBody />
     </div>
   );
 };
