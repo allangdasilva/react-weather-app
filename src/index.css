@@ -18,4 +18,6 @@
 @theme {
   --font-satoshi-regular: "Satoshi-Regular", sans-serif;
   --font-satoshi-light: "Satoshi-Light", sans-serif;
+
+  --color-light: #ffffff;
 }

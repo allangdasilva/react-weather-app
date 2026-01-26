@@ -5,7 +5,7 @@ import TextBody from "../ui/TextBody";
 
 const WeatherComponent = () => {
   return (
-    <div>
+    <div className="bg-blue-600">
       WeatherComponent
       <SearchBar
         type="text"
