@@ -1,8 +1,8 @@
 const WeekCardCelsius = () => {
   return (
-    <div>
+    <div className="font-body text-light *:block">
       <span>23°</span>
-      <span>16°</span>
+      <span className="font-primary-light text-light/75">16°</span>
     </div>
   );
 };

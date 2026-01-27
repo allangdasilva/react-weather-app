@@ -1,5 +1,5 @@
 const WeekCardDay = () => {
-  return <span>24</span>;
+  return <span className="font-body text-light">24</span>;
 };
 
 export default WeekCardDay;

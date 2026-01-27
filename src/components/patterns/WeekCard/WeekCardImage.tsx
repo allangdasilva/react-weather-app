@@ -1,7 +1,9 @@
+import ClearDay from "../../icons/ClearDay";
+
 const WeekCardImage = () => {
   return (
     <div>
-      <img src="" alt="" />
+      <ClearDay />
     </div>
   );
 };
