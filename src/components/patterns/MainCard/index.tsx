@@ -1,4 +1,5 @@
 import MainCardCelsius from "./MainCardCelsius";
+import MainCardClimate from "./MainCardClimate";
 import MainCardCurrentDay from "./MainCardCurrentDay";
 import MainCardImage from "./MainCardImage";
 import MainCardInfos from "./MainCardInfos";
@@ -11,5 +12,6 @@ export const MainCard = {
   Celsius: MainCardCelsius,
   Infos: MainCardInfos,
   Title: MainCardTitle,
+  Climate: MainCardClimate,
   CurrentDay: MainCardCurrentDay,
 };

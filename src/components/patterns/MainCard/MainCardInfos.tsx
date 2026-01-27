@@ -1,6 +1,15 @@
-const MainCardInfos = () => {
+import { twMerge } from "tailwind-merge";
+
+interface MainCardInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const MainCardInfos = ({ ...props }: MainCardInfoProps) => {
   return (
-    <div className="flex flex-col gap-2 font-xs text-light/75">
+    <div
+      className={twMerge(
+        "flex flex-col gap-2 font-xs text-light/75",
+        props.className,
+      )}
+    >
       <div>
         Rain: <span>10%</span>
       </div>

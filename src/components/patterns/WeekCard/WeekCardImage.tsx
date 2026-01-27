@@ -1,9 +1,9 @@
-import ClearDay from "../../icons/ClearDay";
+import CloudyDay from "../../icons/CloudyDay";
 
 const WeekCardImage = () => {
   return (
     <div>
-      <ClearDay />
+      <CloudyDay />
     </div>
   );
 };

@@ -1,8 +1,15 @@
+import { twMerge } from "tailwind-merge";
+
 interface MainCardRootProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
-const MainCardRoot = ({ children }: MainCardRootProps) => {
-  return <div className="p-4 rounded-lg bg-light/15">{children}</div>;
+
+const MainCardRoot = ({ children, ...props }: MainCardRootProps) => {
+  return (
+    <div className={twMerge("p-4 rounded-lg bg-light/15", props.className)}>
+      {children}
+    </div>
+  );
 };
 
 export default MainCardRoot;
