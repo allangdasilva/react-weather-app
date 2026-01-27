@@ -26,4 +26,13 @@
   .font-body {
     @apply font-primary-regular text-base/6;
   }
+  .font-xs {
+    @apply font-primary-regular text-xs/4;
+  }
+  .font-lg {
+    @apply font-primary-regular text-2xl/8;
+  }
+  .font-xl {
+    @apply font-primary-regular text-[4rem]/16;
+  }
 }

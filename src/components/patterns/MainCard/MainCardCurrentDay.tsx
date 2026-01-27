@@ -1,6 +1,6 @@
 const MainCardCurrentDay = () => {
   return (
-    <div>
+    <div className="font-body text-light/75">
       <span>Wednesday, 11:00</span>
       <span>Cloud</span>
     </div>

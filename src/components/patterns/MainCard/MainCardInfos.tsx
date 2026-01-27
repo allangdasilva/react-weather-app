@@ -1,6 +1,6 @@
 const MainCardInfos = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-2 font-xs text-light/75">
       <div>
         Rain: <span>10%</span>
       </div>

@@ -1,7 +1,9 @@
+import ClearDay from "../../icons/ClearDay";
+
 const MainCardImage = () => {
   return (
     <div>
-      <img src="" alt="" />
+      <ClearDay />
     </div>
   );
 };

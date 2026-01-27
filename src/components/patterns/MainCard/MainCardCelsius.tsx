@@ -1,6 +1,6 @@
 const MainCardCelsius = () => {
   return (
-    <div>
+    <div className="font-xl text-light">
       20<span>°C</span>
     </div>
   );
