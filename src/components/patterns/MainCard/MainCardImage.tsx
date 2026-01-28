@@ -1,8 +1,10 @@
 import ClearDay from "../../icons/ClearDay";
 
-const MainCardImage = () => {
+interface MainCardImageProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const MainCardImage = ({ ...props }: MainCardImageProps) => {
   return (
-    <div>
+    <div {...props}>
       <ClearDay />
     </div>
   );

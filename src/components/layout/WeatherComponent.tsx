@@ -5,6 +5,7 @@ import TextBody from "../ui/TextBody";
 import { getWeather } from "../../api/getWeather";
 import React from "react";
 import WeatherSkeleton from "../skeletons/WeatherSkeleton";
+import WeatherError from "../helper/WeatherError";
 
 const WeatherComponent = () => {
   const [searchLocation, setSearchLocation] = React.useState("");
@@ -40,9 +41,9 @@ const WeatherComponent = () => {
           isDisabled={isLoading}
         />
 
-        {!isLoading && <WeatherSkeleton />}
+        {isLoading && <WeatherSkeleton />}
 
-        {isError && <div>Erro ao buscar dados</div>}
+        {isError && <WeatherError />}
 
         {data && (
           <>
@@ -50,7 +51,7 @@ const WeatherComponent = () => {
               {data.name}, {data.sys.country}
             </TextBody>
             <div className="flex justify-between gap-6 flex-wrap">
-              <MainCard.Root className="w-full flex flex-col min-[440px]:flex-row gap-4 md:max-w-fit">
+              <MainCard.Root className="w-full flex flex-wrap min-[440px]:flex-row gap-4 md:max-w-fit">
                 <MainCard.Image />
                 <MainCard.Celsius temp={data.main.temp} />
                 <MainCard.Infos
@@ -64,12 +65,12 @@ const WeatherComponent = () => {
                 <MainCard.Title className="basis-full mb-2 min-[440px]:m-0 md:text-right" />
                 <MainCard.Climate
                   climate={data.weather[0].main}
-                  className="basis-1/2 md:order-2 md:text-right"
+                  className="md:ml-auto md:order-2 md:text-right"
                 />
                 <MainCard.CurrentDay
                   dt={data.dt}
                   offset={data.timezone}
-                  className="basis-1/2 min-[440px]:text-right md:order-1"
+                  className="min-[440px]:ml-auto md:m-0 md:order-1"
                 />
               </MainCard.Root>
             </div>
