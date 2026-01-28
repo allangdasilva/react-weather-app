@@ -1,11 +1,13 @@
 import { twMerge } from "tailwind-merge";
 
-interface MainCardClimateProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface MainCardClimateProps extends React.HTMLAttributes<HTMLDivElement> {
+  climate: string;
+}
 
-const MainCardClimate = ({ ...props }: MainCardClimateProps) => {
+const MainCardClimate = ({ climate, ...props }: MainCardClimateProps) => {
   return (
     <div className={twMerge("font-body text-light/75", props.className)}>
-      <span>Cloudy</span>
+      <span>{climate}</span>
     </div>
   );
 };

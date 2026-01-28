@@ -1,8 +1,20 @@
 import { twMerge } from "tailwind-merge";
 
-interface MainCardInfoProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface MainCardInfoProps extends React.HTMLAttributes<HTMLDivElement> {
+  feels_like: number;
+  humidity: number;
+  wind: number;
+}
 
-const MainCardInfos = ({ ...props }: MainCardInfoProps) => {
+const MainCardInfos = ({
+  feels_like,
+  humidity,
+  wind,
+  ...props
+}: MainCardInfoProps) => {
+  const celsius = 273.15;
+  const res = (feels_like - celsius).toFixed();
+
   return (
     <div
       className={twMerge(
@@ -11,13 +23,13 @@ const MainCardInfos = ({ ...props }: MainCardInfoProps) => {
       )}
     >
       <div>
-        Rain: <span>10%</span>
+        Feels like: <span>{res}°</span>
       </div>
       <div>
-        Humidity: <span>80%</span>
+        Humidity: <span>{humidity}%</span>
       </div>
       <div>
-        Wind: <span>20 m/s</span>
+        Wind: <span>{wind} m/s</span>
       </div>
     </div>
   );

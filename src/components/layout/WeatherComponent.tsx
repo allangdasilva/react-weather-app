@@ -1,11 +1,29 @@
+import { useQuery } from "@tanstack/react-query";
 import { MainCard } from "../patterns/MainCard";
-import { WeekCard } from "../patterns/WeekCard";
 import SearchBar from "../ui/SearchBar";
 import TextBody from "../ui/TextBody";
-
-const array = ["1", "2", "3", "4", "5", "6", "7", "8"];
+import { getWeather } from "../../api/getWeather";
+import React from "react";
 
 const WeatherComponent = () => {
+  const [searchLocation, setSearchLocation] = React.useState("");
+  const [lastSearch, setLastSearch] = React.useState("");
+
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["weather", searchLocation],
+    queryFn: () => getWeather(searchLocation),
+    enabled: !!searchLocation,
+  });
+
+  const handleSearch = () => {
+    if (!searchLocation || searchLocation === lastSearch || isLoading) {
+      return;
+    }
+
+    setLastSearch(searchLocation);
+    refetch();
+  };
+
   return (
     <div className="min-h-dvh p-6 flex bg-blue-500">
       <div className="w-full max-w-322 m-auto flex flex-col gap-8">
@@ -13,34 +31,49 @@ const WeatherComponent = () => {
           type="text"
           placeholder="Search by location"
           label="search-by-location"
+          value={searchLocation}
+          onChange={({ target }) => {
+            setSearchLocation(target.value);
+          }}
+          handleClick={handleSearch}
+          isDisabled={isLoading}
         />
-        <TextBody>Flórida, EUA</TextBody>
 
-        <div className="flex justify-between gap-6 flex-wrap">
-          <MainCard.Root className="w-full flex flex-col min-[440px]:flex-row gap-4 md:max-w-fit">
-            <MainCard.Image />
-            <MainCard.Celsius />
-            <MainCard.Infos className="min-[440px]:ml-auto min-[440px]:text-right md:text-left" />
-          </MainCard.Root>
-          <MainCard.Root className="w-full flex flex-col gap-y-2 min-[440px]:flex-row min-[440px]:flex-wrap md:max-w-fit">
-            <MainCard.Title className="basis-full mb-2 min-[440px]:m-0 md:text-right" />
-            <MainCard.Climate className="basis-1/2 md:order-2 md:text-right" />
-            <MainCard.CurrentDay className="basis-1/2 min-[440px]:text-right md:order-1" />
-          </MainCard.Root>
-        </div>
+        {isLoading && <div>...loading</div>}
 
-        <ul className="min-w-0 pb-6 flex gap-6 overflow-x-auto">
-          {array.map((day) => (
-            <li key={day}>
-              <WeekCard.Root className="grid grid-cols-2 gap-y-2">
-                <WeekCard.Day />
-                <WeekCard.WeekDay />
-                <WeekCard.Image />
-                <WeekCard.Celsius />
-              </WeekCard.Root>
-            </li>
-          ))}
-        </ul>
+        {isError && <div>Erro ao buscar dados</div>}
+
+        {data && (
+          <>
+            <TextBody>
+              {data.name}, {data.sys.country}
+            </TextBody>
+            <div className="flex justify-between gap-6 flex-wrap">
+              <MainCard.Root className="w-full flex flex-col min-[440px]:flex-row gap-4 md:max-w-fit">
+                <MainCard.Image />
+                <MainCard.Celsius temp={data.main.temp} />
+                <MainCard.Infos
+                  feels_like={data.main.feels_like}
+                  humidity={data.main.humidity}
+                  wind={data.wind.speed}
+                  className="min-[440px]:ml-auto min-[440px]:text-right md:text-left"
+                />
+              </MainCard.Root>
+              <MainCard.Root className="w-full flex flex-col gap-y-2 min-[440px]:flex-row min-[440px]:flex-wrap md:max-w-fit">
+                <MainCard.Title className="basis-full mb-2 min-[440px]:m-0 md:text-right" />
+                <MainCard.Climate
+                  climate={data.weather[0].main}
+                  className="basis-1/2 md:order-2 md:text-right"
+                />
+                <MainCard.CurrentDay
+                  dt={data.dt}
+                  offset={data.timezone}
+                  className="basis-1/2 min-[440px]:text-right md:order-1"
+                />
+              </MainCard.Root>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

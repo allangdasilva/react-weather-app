@@ -4,9 +4,18 @@ interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type: string;
   label: string;
   placeholder: string;
+  isDisabled: boolean;
+  handleClick: () => void;
 }
 
-const SearchBar = ({ type, label, placeholder, ...props }: SearchBarProps) => {
+const SearchBar = ({
+  type,
+  label,
+  placeholder,
+  isDisabled,
+  handleClick,
+  ...props
+}: SearchBarProps) => {
   return (
     <>
       <label className="sr-only" htmlFor={label}>
@@ -21,8 +30,10 @@ const SearchBar = ({ type, label, placeholder, ...props }: SearchBarProps) => {
           id={label}
         />
         <button
+          onClick={() => handleClick()}
           type="button"
-          className="absolute top-0 right-0 py-3 px-4 cursor-pointer"
+          disabled={isDisabled}
+          className="absolute top-0 right-0 py-3 px-4 rounded-r-lg cursor-pointer outline-none disabled:opacity-40 focus:scale-110"
         >
           <SearchIcon />
         </button>
