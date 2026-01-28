@@ -4,6 +4,7 @@ import SearchBar from "../ui/SearchBar";
 import TextBody from "../ui/TextBody";
 import { getWeather } from "../../api/getWeather";
 import React from "react";
+import WeatherSkeleton from "../skeletons/WeatherSkeleton";
 
 const WeatherComponent = () => {
   const [searchLocation, setSearchLocation] = React.useState("");
@@ -39,7 +40,7 @@ const WeatherComponent = () => {
           isDisabled={isLoading}
         />
 
-        {isLoading && <div>...loading</div>}
+        {!isLoading && <WeatherSkeleton />}
 
         {isError && <div>Erro ao buscar dados</div>}
 
