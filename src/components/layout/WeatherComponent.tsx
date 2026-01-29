@@ -53,7 +53,7 @@ const WeatherComponent = () => {
           <a
             aria-label="Ver código no GitHub"
             title="Acessar código-fonte no GitHub"
-            href="http://"
+            href="https://github.com/allangdasilva/react-weather-app"
             target="_blank"
             rel="noopener noreferrer"
           >
