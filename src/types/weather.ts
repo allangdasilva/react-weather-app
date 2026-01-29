@@ -6,6 +6,8 @@ export const WeatherSchema = z.object({
   timezone: z.number(),
   sys: z.object({
     country: z.string(),
+    sunrise: z.number(),
+    sunset: z.number(),
   }),
   main: z.object({
     temp: z.number(),

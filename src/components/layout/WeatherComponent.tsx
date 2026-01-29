@@ -6,6 +6,13 @@ import { getWeather } from "../../api/getWeather";
 import React from "react";
 import WeatherSkeleton from "../skeletons/WeatherSkeleton";
 import WeatherError from "../helper/WeatherError";
+import GitHub from "../icons/GitHub";
+import {
+  getDayPeriod,
+  getTemperatureRange,
+  mapWeatherCondition,
+} from "../../api/weatherAdpter";
+import { weatherVisualMap } from "../../api/weatherVisual";
 
 const WeatherComponent = () => {
   const [searchLocation, setSearchLocation] = React.useState("");
@@ -26,9 +33,34 @@ const WeatherComponent = () => {
     refetch();
   };
 
+  const backgroundClass = React.useMemo(() => {
+    if (!data) return "bg-day-primary";
+
+    const condition = mapWeatherCondition(data.weather[0].main);
+    const tempRange = getTemperatureRange(data.main.temp);
+    const period = getDayPeriod(data.dt, data.sys.sunrise, data.sys.sunset);
+
+    return (
+      weatherVisualMap[condition][tempRange][period].background ??
+      "bg-day-primary"
+    );
+  }, [data]);
+
   return (
-    <div className="min-h-dvh p-6 flex bg-blue-500">
+    <div className={`min-h-dvh p-6 flex transition-colors ${backgroundClass}`}>
       <div className="w-full max-w-322 m-auto flex flex-col gap-8">
+        <div className="w-fit">
+          <a
+            aria-label="Ver código no GitHub"
+            title="Acessar código-fonte no GitHub"
+            href="http://"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHub />
+          </a>
+        </div>
+
         <SearchBar
           type="text"
           placeholder="Search by location"
@@ -52,7 +84,13 @@ const WeatherComponent = () => {
             </TextBody>
             <div className="flex justify-between gap-6 flex-wrap">
               <MainCard.Root className="w-full flex flex-wrap min-[440px]:flex-row gap-4 md:max-w-fit">
-                <MainCard.Image />
+                <MainCard.Image
+                  src={data.weather[0].main}
+                  temp={data.main.temp}
+                  sunrise={data.sys.sunrise}
+                  sunset={data.sys.sunset}
+                  currentDt={data.dt}
+                />
                 <MainCard.Celsius temp={data.main.temp} />
                 <MainCard.Infos
                   feels_like={data.main.feels_like}

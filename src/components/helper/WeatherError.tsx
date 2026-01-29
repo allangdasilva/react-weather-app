@@ -1,5 +1,3 @@
-import React from "react";
-
 const WeatherError = () => {
   return (
     <div className="font-body text-light">

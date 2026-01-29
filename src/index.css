@@ -20,6 +20,11 @@
   --font-primary-light: "Satoshi-Light", sans-serif;
 
   --color-light: #ffffff;
+
+  --color-day-primary: #335cf1;
+  --color-day-secondary: #7caae5;
+  --color-night-primary: #1d2837;
+  --color-night-secondary: #2f3f55;
 }
 
 @layer components {
