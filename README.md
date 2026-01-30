@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# 🌤️ Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Aplicação desenvolvida com o objetivo de demonstrar minhas habilidades como **Desenvolvedor Front-end**, com foco em **React moderno**, **arquitetura de componentes** e **UI/UX**.
 
-Currently, two official plugins are available:
+🔗 **Demo:** [weather-app](https://react-weather-app-delta-ashy.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📸 Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Preview do Weather App](/public/images/weather-app-preview.png "Weather App")
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🎨 Design
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O layout da aplicação foi **inteiramente desenvolvido por mim no Figma**, com foco em:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Clareza visual
+- Hierarquia da informação
+- Responsividade
+- Experiência do usuário baseada no contexto climático
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+🔗 **Figma:** [Weather App Figma](https://www.figma.com/design/5ZRN6nIIZwBeyko5xbEnNf/Weather-App?node-id=0-1&t=1QVVy6qjopeL2tg8-1)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Tecnologias
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend:** React v19, TypeScript
+- **Bundler:** Vite v7
+- **Estilização:** Tailwind CSS v4, tailwind-merge v3
+- **Data Fetching / Cache:** TanStack React Query v5
+- **Validação de dados:** Zod v4
+- **Versionamento:** Git e GitHub
+
+---
+
+## ✨ Funcionalidades
+
+- Busca de previsão do tempo por localidade
+- Exibição de dados climáticos em tempo real
+- Background dinâmico de acordo com:
+  - Condição climática
+  - Temperatura
+  - Período do dia (dia/noite)
+- Ícones e cores personalizados baseados no clima
+- Skeleton de loading durante o carregamento
+- Tratamento de erros de API e validação de dados
+- Interface responsiva e adaptável a diferentes telas
+
+---
+
+## 🧩 Arquitetura e Padrões
+
+- Uso do **Compound Components Pattern**
+- Componentes reutilizáveis
+- Separação clara entre:
+  - Lógica de domínio
+  - Camada visual
+  - Camada de dados
+- Funções utilitárias isoladas para regras de negócio (clima, horário, temperatura)
+- Integração da API adaptada para suportar:
+  - Ícones personalizados
+  - Estados visuais dinâmicos
+
+---
+
+## 🧠 Aprendizados
+
+- Uso do **TanStack Query** para controle de cache e requisições
+- Validação e normalização de dados de API com **Zod**
+- Aplicação prática de **Compound Components** em um cenário real
+- Criação de estados visuais derivados a partir de dados externos
+- Integração entre design (Figma) e implementação em React
+- Organização de código pensando em escalabilidade
+
+---
+
+## 🧑‍💻 Autor
+
+**Allan Silva**  
+Desenvolvedor Front-end & UI/UX Designer
+
+[LinkedIn](https://www.linkedin.com/in/allangdasilva/) •  
+[Portfólio](https://portfolio-allan-silva.vercel.app/)
